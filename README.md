@@ -1,1 +1,2 @@
 # AlgoritmusTask
+Prosím napište algoritmus (jazyk volný), který ze seznamu vytřídí prvky podle nějakých pravidel, včetně příkladu takového pravidla. Tzn. ať je tam sekce, kam se doplní konkrétní pravidla, prvky budou někde mimo v seznamu, který algoritmus projde a smaže hodnoty, které neprošly pravidly.
