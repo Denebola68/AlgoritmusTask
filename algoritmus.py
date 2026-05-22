@@ -1,8 +1,14 @@
-print ("Vložte zoznam, jednotlivé prvky zoznamu musia byť oddelené čiarkou a medzerou: ")
-zoznam = input()
+def welcome():
+    print ("Vitajte vo filtri chemických prvkov!")
 
-print ("Teraz vložte ale aspoň jedno pravidlo, ktoré sa použije pri triedení zoznamu. Pravidlá musia být oddelené čiarkou a medzerou: ")
-pravidla = input()
+def read_file():
+    zoznam = []
+    return zoznam
+
+def define_rules():
+    print ("Teraz vložte ale aspoň jedno pravidlo, ktoré sa použije pri triedení zoznamu: ")
+    pravidla = input()
+    return pravidla
 
 def algoritmus(zoznam, pravidla):
     vytriedeny_zoznam = []
