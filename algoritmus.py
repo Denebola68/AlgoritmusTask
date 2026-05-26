@@ -35,7 +35,7 @@ def algoritmus(zoznam, pravidla):
             vytriedeny_zoznam.append(item)
         else:
             pass
-    print (f"Prvky, ktoré zodpovedajú pravidlám {pravidla} sú:\n {vytriedeny_zoznam}")
+    print (f"Prvky, ktoré sú v skupenstve: {pravidla} :\n {vytriedeny_zoznam}")
 
 
 welcome ()
