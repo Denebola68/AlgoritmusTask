@@ -1,6 +1,7 @@
 """autor: Zuzana Bodri
 Tento program slúži na filtrovanie chemických prvkov podľa zadaných pravidiel.
-Program načíta zoznam chemických prvkov z JSON súboru, umožní užívateľovi zadať pravidlá a následne vytriedi zoznam podľa týchto pravidiel."""
+Program načíta zoznam chemických prvkov z JSON súboru, umožní užívateľovi zadať pravidlá a následne vytriedi zoznam podľa týchto pravidiel.
+Pôvod zoznamu: https://jsonlint.com/datasets/elements"""
 
 import json
 
@@ -13,14 +14,24 @@ def read_file(source):
     return zoznam
 
 def define_rules():
-    print ("Teraz vložte ale aspoň jedno pravidlo, ktoré sa použije pri triedení zoznamu: ")
-    pravidla = input()
-    return pravidla
+    print ("Teraz vložte skupenstvo prvku, pri normálnych podmienkach, ktoré sa použije pri triedení zoznamu: \n- pevné skupenstvo (s) \n- kvapalné skupenstvo (l) \n- plynné skupenstvo (g)")
+    pravidla = input().lower().strip()
+    if pravidla in ["s", "l", "g"]:
+        if pravidla == "s":
+            return "Solid"
+        elif pravidla == "l":
+            return "Liquid"
+        elif pravidla == "g":
+            return "Gas"
+    else:
+        print("Neplatné skupenstvo. Prosím, zadajte jedno z uvedených.")
+        return define_rules()
+
 
 def algoritmus(zoznam, pravidla):
     vytriedeny_zoznam = []
-    for item in zoznam:
-        if item in pravidla: #dodefinovat!
+    for item in zoznam["elements"]:
+        if (item["phase"] == pravidla):
             vytriedeny_zoznam.append(item)
         else:
             pass
@@ -28,4 +39,6 @@ def algoritmus(zoznam, pravidla):
 
 
 welcome ()
-read_file ("elements.json")
+zoznam = read_file ("elements.json")
+pravidla = define_rules ()
+algoritmus (zoznam, pravidla)
