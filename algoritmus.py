@@ -44,6 +44,9 @@ def rule_phase_match(item, phase_choice):
 
 # Cyklus cez zoznam, aplikácia pravidla pre jednotlivé itemy v slovníku a vytvorenie zoznamu fittujúcich hodnôt:
 def algoritmus(zoznam, vybrane_pravidlo, kriterium):
+   # POZNÁMKA: I keď zadanie znelo "...,který algoritmus projde a smaže hodnoty",
+   # rozhodla som sa postavit funkciu  na vytvorení prázdneho zoznamu, kde sa uložia vyhovujúce položky původného zoznamu.
+   # Tím som sa chcela vyhnúť mazaniu položiek zoznamu, cez ktorý prechádza cyklus.
    filtered_elements = []
    for item in zoznam["elements"]:
         if vybrane_pravidlo(item, kriterium) is True:
