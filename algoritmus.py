@@ -25,9 +25,9 @@ def rule_phase_choice():
 
     while True:
         print ("Teraz vložte skupenstvo prvku, pri normálnych podmienkach, ktoré sa použije pri triedení zoznamu: \n- pevné skupenstvo (s) \n- kvapalné skupenstvo (l) \n- plynné skupenstvo (g)")
-        skupenstvo = input().lower().strip()
-        if skupenstvo in phase_conversion:
-            return phase_conversion[skupenstvo]
+        phase = input().lower().strip()
+        if phase in phase_conversion:
+            return phase_conversion[phase]
         else:
             print ("Neplatný vstup, zadejte prosím 's', 'l' nebo 'g'.")
 
@@ -52,11 +52,12 @@ def algoritmus(zoznam, vybrane_pravidlo, kriterium):
         if vybrane_pravidlo(item, kriterium) is True:
             filtered_elements.append(item)
    print (f"Zoznam prvkov, ktoré odpovídají zadanému pravidlu: {filtered_elements}")
+   return filtered_elements
 
 #_________________________________________________________________________
 
-
-welcome ()
-zoznam = read_file ("elements.json")
-phase_choice = rule_phase_choice()
-algoritmus (zoznam, rule_phase_match, phase_choice)
+if __name__ == "__main__":
+    welcome ()
+    zoznam = read_file ("elements.json")
+    phase_choice = rule_phase_choice()
+    algoritmus (zoznam, rule_phase_match, phase_choice)
