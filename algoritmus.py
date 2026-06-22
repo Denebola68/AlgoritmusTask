@@ -5,19 +5,12 @@ Pôvod zoznamu: https://jsonlint.com/datasets/elements"""
 # importy: 
 import json
 
-# Úvodné funkcie:
-def welcome():
-    print ("Vitajte vo filtri chemických prvkov!")
-
-# Načítanie JSONu s chemickými prvkami
-def read_file(source):
-    with open(source, encoding = "utf-8") as file:
-        zoznam = json.load(file)
-    return zoznam
-
 # Pravidla pre triedenie:
 
     # Pravidlo 1:.
+def choice_rule():
+    pass
+
 
     # Výber skupenstva užívatelom
 def rule_phase_choice():
@@ -49,15 +42,31 @@ def algoritmus(zoznam, vybrane_pravidlo, kriterium):
    # Tím som sa chcela vyhnúť mazaniu položiek zoznamu, cez ktorý prechádza cyklus.
    filtered_elements = []
    for item in zoznam["elements"]:
-        if vybrane_pravidlo(item, kriterium) is True:
+        if vybrane_pravidlo(item, kriterium):
             filtered_elements.append(item)
    print (f"Zoznam prvkov, ktoré odpovídají zadanému pravidlu: {filtered_elements}")
    return filtered_elements
 
 #_________________________________________________________________________
 
+
+
 if __name__ == "__main__":
-    welcome ()
-    zoznam = read_file ("elements.json")
-    phase_choice = rule_phase_choice()
-    algoritmus (zoznam, rule_phase_match, phase_choice)
+    #uvitani
+    print ("Vitajte vo filtri chemických prvkov!")
+    #načti file
+    with open("elements.json", encoding = "utf-8") as file:
+        zoznam = json.load(file)
+
+    #hlavni smyčka programu
+    while True:
+        #ponuka na ukončenie programu
+        print ("Pre ukončenie programu stlač (q), pro pokračovanie programu Enter.")
+        userinput = input().lower().strip()
+        if userinput == "q":
+            break
+        #vyber filtru
+        phase_choice = rule_phase_choice()
+        #vyfiltrovani
+        algoritmus (zoznam, rule_phase_match, phase_choice)
+    
